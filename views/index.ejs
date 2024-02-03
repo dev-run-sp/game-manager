@@ -15,10 +15,10 @@
         <label for="gameName">Game Name:</label>
         <input type="text" id="gameName" placeholder="Enter game name">
 
-        <label for="playerX">Player X won:</label>
+        <label for="playerX">Abdullahi won:</label>
         <input type="number" id="playerX" value="0">
 
-        <label for="playerY">playerY won:</label>
+        <label for="playerY">Mohamed won:</label>
         <input type="number" id="playerY" value="0">
 
         <button onclick="addRow()">Submit</button>
@@ -29,8 +29,8 @@
             <thead>
                 <tr>
                     <th>Game</th>
-                    <th>playerX</th>
-                    <th>playerY</th>
+                    <th>Abdullahi</th>
+                    <th>Mohamed</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,12 +53,8 @@
 
     <script>
         function addRow() {
-            const timestamp = new Date().getTime(); // Get current timestamp
-            const randomPart = Math.floor(Math.random() * 1000); // Generate a random number (adjust as needed)
-            const uniqueId = `${timestamp}${randomPart}`;
-
             // Get values from input fields
-            var gameName = document.getElementById('gameName').value;
+            var gameName = document.getElementById('gameName').value.toLowerCase();
             var playerX = document.getElementById('playerX').value;
             var playerY = document.getElementById('playerY').value;
 
@@ -77,7 +73,7 @@
                 body: JSON.stringify(update),
             };
 
-            fetch(`/${gameName}/${uniqueId}`, options)
+            fetch(`game/${gameName}`, options)
                 .then(data => {
                     if (!data.ok) {
                         throw Error(data.status);
