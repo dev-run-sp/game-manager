@@ -29,8 +29,7 @@ app.post('/:col/:key', async (req, res) => {
   console.log(`from collection: ${col} delete key: ${key} with params ${JSON.stringify(req.params)}`)
   let priorItems = await db.collection(col).get(key)
   if (priorItems == null) {
-    priorItems = [priorItems]
-    priorItems.concat(req.body)
+    priorItems = [req.body]
   } else {
     priorItems.concat(req.body)
   }
