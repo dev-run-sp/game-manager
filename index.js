@@ -62,17 +62,18 @@ app.get('/:col', async (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  fetch(`/jaipur`)
+  fetch(`${process.env.CYCLIC_URL}/jaipur`)
     .then(data => {
       if (!data.ok) {
         throw Error(data.status);
       }
       return data.json();
     }).then(update => {    
+      console.log("this is a successful call", update)
       res.render('index', { update });
     })
     .catch(error => {
-      console.log(error)
+      console.log("this is an error", error)
       res.render('error', {error})
     })  
 });
