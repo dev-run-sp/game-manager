@@ -77,8 +77,8 @@ app.get('/', (req, res) => {
       return data.json();
     }).then(update => {    
       console.log("this is a successful call", update)
-      const gameResults = update.results
-      res.render('index', {gameResults });
+      const gameResults = update?.results
+      res.render('index', { gameResults });
     })
     .catch(error => {
       console.log("this is an error", error)
