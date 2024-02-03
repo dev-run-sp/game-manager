@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
       return data.json();
     }).then(update => {    
       console.log("this is a successful call", update)
-      const gameResults = update?.results || []
+      const gameResults = update?.results?.props || []
       res.render('index', { gameResults });
     })
     .catch(error => {
