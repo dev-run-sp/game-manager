@@ -69,7 +69,7 @@ app.get('/:col', async (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  fetch(`${process.env.CYCLIC_URL}/jaipur`)
+  fetch(`${process.env.CYCLIC_URL}/game/jaipur`)
     .then(data => {
       if (!data.ok) {
         throw Error(data.status);
